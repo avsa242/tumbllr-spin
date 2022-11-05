@@ -33,17 +33,26 @@ PUB main | gx, gy, gz, ax, ay, az
     imu.accel_data_rate(200)
     imu.accel_scale(2)
     imu.accel_axis_ena(%111)
-    imu.gyro_scale(500)
+    imu.gyro_scale(250)
     imu.gyro_axis_ena(%111)
     ser.printf1(@"accel scale: %d\n\r", imu.accel_scale(-2))
     ser.printf1(@"gyro scale: %d\n\r", imu.gyro_scale(-2))
 
-    repeat
-        imu.accel_data(@ax, @ay, @az)
-        imu.gyro_data(@gx, @gy, @gz)
-        ser.pos_xy(0, 10)
-        ser.printf3(@"x: %06.6d  y: %06.6d  z: %06.6d\n\r", ax, ay, az)
-        ser.printf3(@"x: %06.6d  y: %06.6d  z: %06.6d", gx, gy, gz)
+    ser.strln(@"press a key to calibrate (hold level)")
 
+    ser.getchar()
+    imu.calibrate_accel()
+    ser.strln(@"accel done")
+    imu.calibrate_gyro()
+    ser.strln(@"gyro done")
+
+    repeat
+'        imu.accel_g(@ax, @ay, @az)
+'        imu.gyro_dps(@gx, @gy, @gz)
+        imu.accel_data_cache()
+        ser.pos_xy(0, 10)
+'        ser.printf3(@"x: %07.7d  y: %07.7d  z: %07.7d\n\r", ax, ay, az)
+'        ser.printf3(@"x: %06.6d  y: %06.6d  z: %06.6d", gx, gy, gz)
+        ser.printf2(@"pitch: %5.5d  roll: %5.5d\n\r", imu.pitch(), imu.roll())
     repeat
 
