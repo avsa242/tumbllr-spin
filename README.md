@@ -16,7 +16,7 @@ The basic software to interface with the following major components must first b
 - [ ] IR TX `(TBD)`
 - [ ] IR RX `(TBD)`
 - [ ] BLE `(TBD)`
-- [ ] IMU: MPU6050 `(TBD)`
+- [ ] IMU: MPU6050 `(sensor.imu.6dof.mpu6050.spin)` - *WIP*
 
 ## Projected cog usage
 ----------------------
