@@ -30,11 +30,6 @@ PUB main | gx, gy, gz, ax, ay, az
         ser.strln(@"imu failed to start")
         repeat
 
-    imu.accel_data_rate(200)
-    imu.accel_scale(2)
-    imu.accel_axis_ena(%111)
-    imu.gyro_scale(250)
-    imu.gyro_axis_ena(%111)
     ser.printf1(@"accel scale: %d\n\r", imu.accel_scale(-2))
     ser.printf1(@"gyro scale: %d\n\r", imu.gyro_scale(-2))
 

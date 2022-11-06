@@ -47,14 +47,14 @@ PUB main | pls, time_ms
         ifnot (ina[IR_RX_L])
             rgb.plot(FL, 0, $7f_00_00_00)
         else
-            rgb.plot(FL, 0, 0)
+            rgb.plot(FL, 0, $00_1f_00_00)
         ifnot (ina[IR_RX_R])
             rgb.plot(FR, 0, $7f_00_00_00)
         else
-            rgb.plot(FR, 0, 0)
+            rgb.plot(FR, 0, $00_1f_00_00)
 
 VAR long _ir_tx_stack[50]
-CON IRM_56384_FREQ  = 38_461
+CON IRM_56384_FREQ  = 38_000
 CON IR_TX_HALF_PER  = ((80_000_000 / IRM_56384_FREQ) / 2)
 PUB cog_ir_tx() | halfper
 ' modulate IR_TX LEDs at 38kHz (both L & R are electrically tied to the same I/O pin)
